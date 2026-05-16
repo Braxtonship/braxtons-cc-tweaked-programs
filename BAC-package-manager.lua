@@ -35,6 +35,7 @@ end
 --version
 
 if args[1] == "--version" or args[1] == "-v" then
+    term.clear()
     print("BAC - package manager")
     print("---------------------")
     term.setTextColour(colours.pink)
