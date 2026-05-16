@@ -51,12 +51,12 @@ end
 --install statment
 
 if args[1] == "install" then
-    if #args[2] == 0 then
+    if args[2] == "" then
         print("please provide a package")
     end
     for i = 1, #packages do
         if  packages[i] == args[2] then
-            installPackage() --install the package
+            installPackage("") --install the package
         else
             print('the package: "', args[2], '" could not be found.')
         end
@@ -91,7 +91,7 @@ end
         
 -- == main code (packages section) == --
 
-function installPackage()
+function installPackage(yes)
     if args[2] == "bir0fetch" then
         if #args[3] == 0 then
             print("selected package bir0fetch")
