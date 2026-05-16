@@ -51,11 +51,12 @@ end
 
 --update
 
-if args[1] == "update" then
+if args[1] == "update" or args[1] == "reinstall" then
     if args[2] == "-y" then
         print("update BAC package manager")
         print("---------------------------")
         print("updating BAC package manager...")
+        shell.run("rm", "bac.lua")
         shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac.lua")
         print("finished!")
     else
@@ -66,6 +67,7 @@ if args[1] == "update" then
         local input = read()
         if input == "y" then
             print("updating...")
+            shell.run("rm", "bac.lua")
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac.lua")
             print("finished!")
         else
