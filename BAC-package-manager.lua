@@ -54,10 +54,12 @@ if args[1] == "install" then
     if #args[2] == 0 then
         print("please provide a package")
     end
-    if table.find(packages, args[2]) then
-        installPackage() --install the package
-    else
-        print('the package: "', args[2], '" could not be found.')
+    for i = 1, #packages do
+        if  packages[i] == args[2] then
+            installPackage() --install the package
+        else
+            print('the package: "', args[2], '" could not be found.')
+        end
     end
 end
 
