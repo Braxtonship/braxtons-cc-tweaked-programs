@@ -5,9 +5,9 @@ local packages = {
     "bir0fetch"
 }
 local helpCommands = {
-    "install [package of choice] (add -y to auto confirm)",
+    "install <package of choice> (add -y to auto confirm)",
     "update (will get the newest version of BAC package manager)",
-    "--packages [search (WIP)] or (-l)",
+    "--packages <search (WIP)> or (-l)",
     "--version (or -v)"
 }
 
@@ -78,7 +78,7 @@ end
 
 local function installPackage()
     if args[2] == "bir0fetch" then
-        if #args[3] == 0 then
+        if args[3] == "" then
             print("selected package bir0fetch")
             print("---------------------------")
             print("are you sure you want to install bir0fetch?")
