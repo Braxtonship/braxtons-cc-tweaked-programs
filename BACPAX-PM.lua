@@ -95,13 +95,19 @@ end
 --version
 
 if args[1] == "--version" or args[1] == "-v" then
-    term.clear()
-    print("BACPAX - package manager")
-    print("---------------------")
-    term.setTextColour(colours.red)
-    print("BACPAX is a package manager for cc:tweaked, simular to the linux APT package manager.")
-    term.setTextColour(colours.green)
-    print("version: ", version)
+    if args[2] == "getVerScript" then
+        term.setTextColour(colours.green)
+        print("updated to latest version: ", version)
+        term.setTextColour(colours.white)
+    else
+        term.clear()
+        print("BACPAX - package manager")
+        print("---------------------")
+        term.setTextColour(colours.red)
+        print("BACPAX is a package manager for cc:tweaked, simular to the linux APT package manager.")
+        term.setTextColour(colours.green)
+        print("version: ", version)
+    end
 end
 
 --package lookup
