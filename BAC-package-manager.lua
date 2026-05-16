@@ -37,7 +37,9 @@ end
 if args[1] == "--version" or args[1] == "-v" then
     print("BAC - package manager")
     print("---------------------")
+    term.setTextColour(colours.pink)
     print("BAC package manager is a package manager for cc:tweaked, simular to the linux APT package manager.")
+    term.setTextColour(colours.green)
     print("version: ", version)
 end
 
@@ -59,7 +61,9 @@ if args[1] == "update" or args[1] == "reinstall" then
         print("---------------------------")
         print("updating BAC package manager...")
         shell.run("rm", "bac.lua")
+        term.setTextColour(colours.yellow)
         shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
+        term.setTextColour(colours.white)
         print("finished!")
         term.setTextColour(colours.green)
         print("updated to latest version: ", version)
@@ -73,7 +77,9 @@ if args[1] == "update" or args[1] == "reinstall" then
         if input == "y" then
             print("updating...")
             shell.run("rm", "bac.lua")
+            term.setTextColour(colours.yellow)
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
+            term.setTextColour(colours.white)
             print("finished!")
             term.setTextColour(colours.green)
             print("updated to latest version: ", version)
@@ -99,6 +105,7 @@ local function installPackage()
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
             term.setTextColour(colours.white)
             print("finished!")
+            return
         else
             print("selected package birfetch")
             print("---------------------------")
@@ -112,6 +119,7 @@ local function installPackage()
                 shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
                 term.setTextColour(colours.white)
                 print("finished!")
+                return
             else
                 print("aborting installation...")
                 return
@@ -129,6 +137,7 @@ local function installPackage()
             shell.run("pastebin", "get", "EmssRF7b", "googol")
             term.setTextColour(colours.white)
             print("finished!")
+            return
         else
             print("selected package googol")
             print("---------------------------")
@@ -143,6 +152,7 @@ local function installPackage()
                 shell.run("pastebin", "get", "EmssRF7b", "googol")
                 term.setTextColour(colours.white)
                 print("finished!")
+                return
             else
                 print("aborting installation...")
                 return
@@ -164,6 +174,7 @@ local function installPackage()
             shell.run("pastebin", "get", "uUSrzyyx", "startup")
             term.setTextColour(colours.white)
             print("finished!")
+            return
         else
             print("selected package password-program")
             print("---------------------------")
@@ -182,6 +193,7 @@ local function installPackage()
                 shell.run("pastebin", "get", "uUSrzyyx", "startup")
                 term.setTextColour(colours.white)
                 print("finished!")
+                return
             else
                 print("aborting installation...")
                 return
