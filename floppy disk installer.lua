@@ -8,7 +8,7 @@ local input = read()
 if input == "y" then
     print("installing...")
     term.setTextColour(colours.yellow)
-    shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
+    shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BACPAX-PM.lua", "bacpax")
     term.setTextColour(colours.green)
     print("installation complete!")
     term.setTextColour(colours.pink)
