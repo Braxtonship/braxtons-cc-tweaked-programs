@@ -61,7 +61,7 @@ if args[1] == "update" or args[1] == "reinstall" then
         print("update BAC package manager")
         print("---------------------------")
         print("updating BAC package manager...")
-        shell.run("rm", "bac.lua")
+        shell.run("rm", "bac")
         term.setTextColour(colours.yellow)
         shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
         term.setTextColour(colours.white)
@@ -77,7 +77,7 @@ if args[1] == "update" or args[1] == "reinstall" then
         local input = read()
         if input == "y" then
             print("updating...")
-            shell.run("rm", "bac.lua")
+            shell.run("rm", "bac")
             term.setTextColour(colours.yellow)
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
             term.setTextColour(colours.white)
