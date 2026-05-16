@@ -1,6 +1,62 @@
+-- == extra setup == --
+
+if not fs.exists("bacpaxDir") and fs.isDir("bacpaxDir") then
+    print("bacpax directory not found...")
+    print("creating directory(s)...")
+    fs.makedir("bacpaxDir")
+    fs.makedir("bacpaxDir/cfg")
+    print("made directory!")
+    print("-----------------------")
+end
+
+--old version replacer
+if not fs.find("bacpaxDir/cfg/keepOldBacpax.lua") then
+    if fs.find("bac") then
+        print("quickClean:")
+        print("found old version of BACPAX.")
+        print("the BACPAX manager has had a name change and is no longer 'BAC', meaning that the original version is out of date. you can remove it or keep it.")
+        print("would you like to remove: Y. or keep it: N. (keeping the old package will not remove the new one.)")
+        print("[Y/N]?")
+        local input = read()
+        if input == "y" then
+            print("-----------------------")
+            print("removing old version of BACPAX")
+            shell.run("rm", "bac")
+            shell.run("rm", "bac.lua")
+            print("bac was successfully removed!")
+            print("returning to main script...")
+            print("-----------------------")
+        elseif input == "n" then
+            print("-----------------------")
+            print("you have chosen to keep old BACPAX")
+            print("updating config")
+            local file = fs.open("bacpaxDir/cfg/keepOldBacpax.lua", "w")
+            if file then
+                file.write("True")
+                file.close()
+                print("success!")
+            else
+                term.setTextColour(colours.red)
+                print("BACPAX: COULD NOT WRITE NEW FILE!")
+                term.setTextColour(colours.white)
+            end
+            print("returning to main script...")
+            print("-----------------------")
+        else
+            print("-----------------------")
+            term.setTextColour(colour.red)
+            print("please input either 'y' or 'n', or use lowercase.")
+            term.setTextColour(colour.white)
+            os.sleep(2)
+            print("returning to main script...")
+            print("-----------------------")
+        end
+    end
+end
+
 -- == vars == --
 local args = { ... }
-local version = "TESTING BUILD v0.10"
+local version = "TESTING BUILD v0.15"
 local packages = {
     "birfetch",
     "googol",
@@ -13,7 +69,7 @@ local packages = {
 
 local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
-    "update (will get the newest version of BAC package manager)",
+    "update (will get the newest version of BACPAX Package Manager)",
     "--packages <search (WIP)> or (-l)",
     "--version (or -v)"
 }
@@ -24,7 +80,7 @@ local helpCommands = {
 
 if #args == 0 then
     print("provide arguments...")
-    print('use "bac --help (or -h)" for list of commands')
+    print('use "bacpax --help (or -h)" for list of commands')
 return
 end
 
@@ -40,10 +96,10 @@ end
 
 if args[1] == "--version" or args[1] == "-v" then
     term.clear()
-    print("BAC - package manager")
+    print("BACPAX - package manager")
     print("---------------------")
     term.setTextColour(colours.red)
-    print("BAC package manager is a package manager for cc:tweaked, simular to the linux APT package manager.")
+    print("BACPAX is a package manager for cc:tweaked, simular to the linux APT package manager.")
     term.setTextColour(colours.green)
     print("version: ", version)
 end
@@ -63,28 +119,28 @@ end
 
 if args[1] == "update" or args[1] == "reinstall" then
     if args[2] == "-y" then
-        print("update BAC package manager")
+        print("update BACPAX package manager")
         print("---------------------------")
-        print("updating BAC package manager...")
-        shell.run("rm", "bac")
+        print("updating BACPAX...")
+        shell.run("rm", "bacpax")
         term.setTextColour(colours.yellow)
-        shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
+        shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bacpax")
         term.setTextColour(colours.white)
         print("finished!")
         term.setTextColour(colours.green)
         print("updated to latest version: ", version)
         term.setTextColour(colours.white)
     else
-        print("update BAC package manager")
+        print("update BACPAX package manager")
         print("---------------------------")
-        print("are you sure you want to update BAC package manager?")
+        print("are you sure you want to update BACPAX package manager?")
         print("(Y/N)")
         local input = read()
         if input == "y" then
             print("updating...")
-            shell.run("rm", "bac")
+            shell.run("rm", "bacpax")
             term.setTextColour(colours.yellow)
-            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bacpax")
             term.setTextColour(colours.white)
             print("finished!")
             term.setTextColour(colours.green)
@@ -309,7 +365,7 @@ local function installPackage()
             print("installing virtualOS gui edition (with dependencies)")
             print("dependencies:")
             term.setTextColour(colours.green)
-            print("password-program-startup")
+            print("virtualOS terminal edition")
             term.setTextColour(colours.white)
             print("---------------------------")
             term.setTextColour(colours.yellow)
@@ -324,7 +380,7 @@ local function installPackage()
             print("are you sure you want to install virtualOS gui edition and its dependencies?")
             print("dependencies:")
             term.setTextColour(colours.green)
-            print("password-program-startup")
+            print("virtualOS terminal edition")
             term.setTextColour(colours.white)
             print("---------------------------")
             print("(Y/N)")
