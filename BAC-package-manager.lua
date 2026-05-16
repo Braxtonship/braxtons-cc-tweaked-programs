@@ -75,6 +75,9 @@ if args[1] == "update" or args[1] == "reinstall" then
             shell.run("rm", "bac.lua")
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac.lua")
             print("finished!")
+            term.setTextColour(colours.green)
+            print("updated to latest version: ", version)
+            term.setTextColour(colours.white)
         else
             print("aborting update...")
             return
