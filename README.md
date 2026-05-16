@@ -1,2 +1,3 @@
 # braxtons-cc-tweaked-programs
-programs for cc:tweaked
+this is a repo for cc:Tweaked mod on minecraft.
+i recomend using the package manager (BAC) for all packages here
