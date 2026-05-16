@@ -133,9 +133,7 @@ if args[1] == "update" or args[1] == "reinstall" then
         shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BACPAX-PM.lua", "bacpax")
         term.setTextColour(colours.white)
         print("finished!")
-        term.setTextColour(colours.green)
-        print("updated to latest version: ", version)
-        term.setTextColour(colours.white)
+        shell.run("bacpax", "-v", "getVerScript")
     else
         print("update BACPAX package manager")
         print("---------------------------")
