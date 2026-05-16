@@ -10,8 +10,8 @@ if not fs.exists("bacpaxDir") then
 end
 
 --old version replacer
-if not fs.find("bacpaxDir/cfg/keepOldBacpax.lua") then
-    if fs.find("bac") then
+if not fs.exists("bacpaxDir/cfg/keepOldBacpax.lua") then
+    if fs.exists("bac") then
         print("quickClean:")
         print("found old version of BACPAX.")
         print("the BACPAX manager has had a name change and is no longer 'BAC', meaning that the original version is out of date. you can remove it or keep it.")
