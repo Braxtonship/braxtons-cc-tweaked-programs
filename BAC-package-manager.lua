@@ -4,7 +4,11 @@ local version = "TESTING BUILD 0.0.5"
 local packages = {
     "birfetch",
     "googol",
-    "password-program"
+    "password-program",
+    "far",
+    "filex",
+    "virtualos-cmd",
+    "virtualos-gui"
 }
 
 local helpCommands = {
@@ -48,6 +52,7 @@ end
 
 if args[1] == "--packages" or args[1] == "-l" then
     print("listing all packages...")
+    print("reminder: packages are case sensitive!")
     print("-----------------------")
     for i = 1, #packages do
         print(packages[i])
@@ -164,7 +169,7 @@ local function installPackage()
         if args[3] == "-y" then
             print("selected package password-program")
             print("---------------------------")
-            print("installing password-program")
+            print("installing password-program (with dependencies)")
             print("dependencies:")
             term.setTextColour(colours.green)
             print("password-program-startup")
@@ -192,6 +197,143 @@ local function installPackage()
                 term.setTextColour(colours.yellow)
                 shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
                 shell.run("pastebin", "get", "uUSrzyyx", "startup")
+                term.setTextColour(colours.white)
+                print("finished!")
+                return
+            else
+                print("aborting installation...")
+                return
+            end
+        end
+    end
+    if args[2] == "far" then
+        if args[3] == "-y" then
+            print("selected package far")
+            print("---------------------------")
+            print("installing far...")
+            print("------------------------")
+            term.setTextColour(colours.yellow)
+            shell.run("wget", "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far", "far")
+            term.setTextColour(colours.white)
+            print("finished!")
+            return
+        else
+            print("selected package far")
+            print("---------------------------")
+            print("are you sure you want to install far?")
+            print("---------------------------")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                print("---------------------------")
+                term.setTextColour(colours.yellow)
+                shell.run("wget", "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far", "far")
+                term.setTextColour(colours.white)
+                print("finished!")
+                return
+            else
+                print("aborting installation...")
+                return
+            end
+        end
+    end
+    if args[2] == "filex" then
+        if args[3] == "-y" then
+            print("selected package FileX")
+            print("---------------------------")
+            print("installing FileX...")
+            print("------------------------")
+            term.setTextColour(colours.yellow)
+            shell.run("pastebin", "run", "AVqAFH8h")
+            term.setTextColour(colours.white)
+            print("finished!")
+            return
+        else
+            print("selected package FileX")
+            print("---------------------------")
+            print("are you sure you want to install FileX?")
+            print("---------------------------")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                print("---------------------------")
+                term.setTextColour(colours.yellow)
+                shell.run("pastebin", "run", "AVqAFH8h")
+                term.setTextColour(colours.white)
+                print("finished!")
+                return
+            else
+                print("aborting installation...")
+                return
+            end
+        end
+    end
+    if args[2] == "virtualos-cmd" then
+        if args[3] == "-y" then
+            print("selected package virtualOS terminal edition")
+            print("---------------------------")
+            print("installing virtualOS terminal edition...")
+            print("------------------------")
+            term.setTextColour(colours.yellow)
+            shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
+            term.setTextColour(colours.white)
+            print("finished!")
+            return
+        else
+            print("selected package virtualOS terminal edition")
+            print("---------------------------")
+            print("are you sure you want to virtualOS terminal edition?")
+            print("---------------------------")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                print("---------------------------")
+                term.setTextColour(colours.yellow)
+                shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
+                term.setTextColour(colours.white)
+                print("finished!")
+                return
+            else
+                print("aborting installation...")
+                return
+            end
+        end
+    end
+    if args[2] == "virtualos-gui" then
+        if args[3] == "-y" then
+            print("selected virtualOS gui edition")
+            print("---------------------------")
+            print("installing virtualOS gui edition (with dependencies)")
+            print("dependencies:")
+            term.setTextColour(colours.green)
+            print("password-program-startup")
+            term.setTextColour(colours.white)
+            print("---------------------------")
+            term.setTextColour(colours.yellow)
+            shell.run("pastebin", "run", "B05YGPPy")
+            shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
+            term.setTextColour(colours.white)
+            print("finished!")
+            return
+        else
+            print("selected package virtualOS gui edition")
+            print("---------------------------")
+            print("are you sure you want to install virtualOS gui edition and its dependencies?")
+            print("dependencies:")
+            term.setTextColour(colours.green)
+            print("password-program-startup")
+            term.setTextColour(colours.white)
+            print("---------------------------")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                term.setTextColour(colours.yellow)
+                shell.run("pastebin", "run", "B05YGPPy")
+                shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
                 term.setTextColour(colours.white)
                 print("finished!")
                 return
