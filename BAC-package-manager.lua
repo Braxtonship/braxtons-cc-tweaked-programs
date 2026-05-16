@@ -6,8 +6,8 @@ local packages = {
 }
 local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
-    "update (will get the newest version of BAC package manager)"
-    "--packages <search (WIP)> or (-p)",
+    "update (will get the newest version of BAC package manager)",
+    "--packages <search (WIP)> or (-l)",
     "--version (or -v)"
 }
 
@@ -36,6 +36,16 @@ if args[1] == "--version" or args[1] == "-v" then
     print("---------------------")
     print("BAC package manager is a package manager for cc:tweaked, simular to the linux APT package manager.")
     print("version: ", version)
+end
+
+--package lookup
+
+if args[1] == "--packages" or args[1] == "-l" then
+    print("listing all packages...")
+    print("-----------------------")
+    for i = 1, #packages do
+        print(packages[i])
+    end
 end
 
 --install statment
