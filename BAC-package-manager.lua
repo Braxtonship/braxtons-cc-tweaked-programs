@@ -70,7 +70,7 @@ if args[1] == "update" then
         print("update BAC package manager")
         print("---------------------------")
         print("updating BAC package manager...")
-        shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "BAC.lua")
+        shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac.lua")
         print("finished!")
     else
         print("update BAC package manager")
@@ -80,7 +80,7 @@ if args[1] == "update" then
         local input = read()
         if input == "y" then
             print("updating...")
-            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "BAC.lua")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac.lua")
             print("finished!")
         else
             print("aborting update...")
