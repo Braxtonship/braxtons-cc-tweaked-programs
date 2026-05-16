@@ -1,6 +1,6 @@
 -- == extra setup == --
 
-if not fs.exists("bacpaxDir") and fs.isDir("bacpaxDir") then
+if not fs.exists("bacpaxDir") then
     print("bacpax directory not found...")
     print("creating directory(s)...")
     fs.makedir("bacpaxDir")
