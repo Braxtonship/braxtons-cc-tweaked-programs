@@ -2,7 +2,7 @@
 local args = { ... }
 local version = "TESTING BUILD 0.0.1"
 local packages = {
-    "bir0fetch"
+    "birfetch"
 }
 
 local helpCommands = {
@@ -80,22 +80,22 @@ end
 -- == main code (packages section) == --
 
 local function installPackage()
-    if args[2] == "bir0fetch" then
+    if args[2] == "birfetch" then
         if args[3] == "-y" then
-            print("selected package bir0fetch")
+            print("selected package birfetch")
             print("---------------------------")
-            print("installing bir0fetch...")
-            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
+            print("installing birfetch...")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "birfetch.lua")
             print("finished!")
         else
-            print("selected package bir0fetch")
+            print("selected package birfetch")
             print("---------------------------")
             print("are you sure you want to install bir0fetch?")
             print("(Y/N)")
             local input = read()
             if input == "y" then
                 print("installing...")
-                shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
+                shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "birfetch.lua")
                 print("finished!")
             else
                 print("aborting installation...")
