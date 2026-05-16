@@ -1,9 +1,14 @@
 term.clear()
-print("bir0fetch:")
+term.setCursorPos(1, 1)
+print("birfetch:")
 print("-----------------")
 print("running: ", os.version())
 print("computer id: ", os.getComputerID())
-print("computer label: ", os.getComputerLabel())
+if os.getComputerLabel()) == nil then
+    print("computer label: ", os.getComputerLabel())
+else
+    print("computer label: n/a")
+end
 print("computer has been running for: ", os.clock())
 print("-----------------")
 term.setCursorPos(1, 7)
