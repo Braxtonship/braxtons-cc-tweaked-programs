@@ -1,16 +1,19 @@
---vars
+-- == vars == --
 local args = { ... }
 local version = "TESTING BUILD 0.0.1"
 local packages = {
-    "NO CURRENT PACKAGES"
+    "bir0fetch"
 }
 local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
+    "update (will get the newest version of BAC package manager)"
     "--packages <search (WIP)> or (-p)",
     "--version (or -v)"
 }
 
--- main code
+-- == main code == --
+
+--argument detection
 
 if #args == 0 then
     print("provide arguments...")
@@ -18,18 +21,87 @@ if #args == 0 then
 return
 end
 
+--help
+
 if args[1] == "--help" or args[1] == "-h" then
     for i = 1, #helpCommands do
         print(helpCommands[i])
     end
 end
 
+--version
+
 if args[1] == "--version" or args[1] == "-v" then
     print("BAC - package manager")
     print("---------------------")
-    print("BAC package manager is a package manager for cc:tweaked. it is simular to the linux APT package manager.")
+    print("BAC package manager is a package manager for cc:tweaked, simular to the linux APT package manager.")
     print("version: ", version)
 end
 
---main code (packages section)
+--install statment
 
+if args[1] == "install" then
+    if #args[2] == 0 then
+        print("please provide a package")
+    end
+    
+    if table.find(packages, args[2]) do
+        function installPackage()
+    else
+        
+    end
+end
+
+--update
+
+if args[1] == "update" then
+    if args[2] == "-y" then
+        print("update BAC package manager")
+        print("---------------------------")
+        print("updating BAC package manager...")
+        shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "BAC.lua")
+        print("finished!")
+    else
+        print("update BAC package manager")
+        print("---------------------------")
+        print("are you sure you want to update BAC package manager?")
+        print("(Y/N)")
+        local input = read()
+        if input == "y" then
+            print("updating...")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "BAC.lua")
+            print("finished!")
+        else
+            print("aborting update...")
+            return
+        end
+    end
+end
+        
+-- == main code (packages section) == --
+
+function installPackage()
+    if args[2] == "bir0fetch" then
+        if #args[3] == 0 then
+            print("selected package bir0fetch")
+            print("---------------------------")
+            print("are you sure you want to install bir0fetch?")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
+                print("finished!")
+            else
+                print("aborting installation...")
+                return
+            end
+        elseif args[3] == "-y" then
+            print("selected package bir0fetch")
+            print("---------------------------")
+            print("installing bir0fetch...")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
+            print("finished!")
+        end
+    end
+end
