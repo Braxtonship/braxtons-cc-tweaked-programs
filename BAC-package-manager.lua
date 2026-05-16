@@ -2,7 +2,9 @@
 local args = { ... }
 local version = "TESTING BUILD 0.0.1"
 local packages = {
-    "birfetch"
+    "birfetch",
+    "googol",
+    "password-program"
 }
 
 local helpCommands = {
@@ -80,22 +82,87 @@ end
 -- == main code (packages section) == --
 
 local function installPackage()
+    -- by me
     if args[2] == "birfetch" then
         if args[3] == "-y" then
             print("selected package birfetch")
             print("---------------------------")
             print("installing birfetch...")
-            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "birfetch.lua")
+            print("---------------------------")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
             print("finished!")
         else
             print("selected package birfetch")
             print("---------------------------")
-            print("are you sure you want to install bir0fetch?")
+            print("are you sure you want to install birfetch?")
+            print("---------------------------")
             print("(Y/N)")
             local input = read()
             if input == "y" then
                 print("installing...")
-                shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "birfetch.lua")
+                shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
+                print("finished!")
+            else
+                print("aborting installation...")
+                return
+            end
+        end
+    end
+    -- not by me
+    if args[2] == "googol" then
+        if args[3] == "-y" then
+            print("selected package googol")
+            print("---------------------------")
+            print("installing googol...")
+            print("------------------------")
+            shell.run("pastebin", "get", "EmssRF7b", "googol")
+            print("finished!")
+        else
+            print("selected package googol")
+            print("---------------------------")
+            print("are you sure you want to install googol?")
+            print("---------------------------")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                print("---------------------------")
+                shell.run("pastebin", "get", "EmssRF7b", "googol")
+                print("finished!")
+            else
+                print("aborting installation...")
+                return
+            end
+        end
+    end
+    if args[2] == "password-program" then
+        if args[3] == "-y" then
+            print("selected package password-program")
+            print("---------------------------")
+            print("installing password-program")
+            print("dependencies:")
+            term.setTextColour(colour.green)
+            print("password-program-startup")
+            term.setTextColour(colour.white)
+            print("---------------------------")
+            shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
+            shell.run("pastebin", "get", "uUSrzyyx", "startup")
+            print("finished!")
+        else
+            print("selected package password-program")
+            print("---------------------------")
+            print("are you sure you want to install password-program and its dependencies?")
+            print("dependencies:")
+            term.setTextColour(colour.green)
+            print("password-program-startup")
+            term.setTextColour(colour.white)
+            print("---------------------------")
+            print("(Y/N)")
+            local input = read()
+            if input == "y" then
+                print("installing...")
+                shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
+                shell.run("pastebin", "get", "uUSrzyyx", "startup")
                 print("finished!")
             else
                 print("aborting installation...")
