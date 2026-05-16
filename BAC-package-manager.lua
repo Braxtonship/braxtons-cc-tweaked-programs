@@ -79,7 +79,13 @@ end
 
 local function installPackage()
     if args[2] == "bir0fetch" then
-        if args[3] == "" then
+        if args[3] == "-y" then
+            print("selected package bir0fetch")
+            print("---------------------------")
+            print("installing bir0fetch...")
+            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
+            print("finished!")
+        else
             print("selected package bir0fetch")
             print("---------------------------")
             print("are you sure you want to install bir0fetch?")
@@ -93,12 +99,6 @@ local function installPackage()
                 print("aborting installation...")
                 return
             end
-        elseif args[3] == "-y" then
-            print("selected package bir0fetch")
-            print("---------------------------")
-            print("installing bir0fetch...")
-            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
-            print("finished!")
         end
     end
 end
