@@ -4,7 +4,7 @@ print("birfetch:")
 print("-----------------")
 print("running: ", os.version())
 print("computer id: ", os.getComputerID())
-if os.getComputerLabel()) == nil then
+if os.getComputerLabel() == nil then
     print("computer label: ", os.getComputerLabel())
 else
     print("computer label: n/a")
