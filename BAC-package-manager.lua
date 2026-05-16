@@ -56,7 +56,7 @@ if args[1] == "install" then
     end
     
     if table.find(packages, args[2]) then
-        function installPackage()
+        installPackage()
     else
         print('the package: "', args[2], '" could not be found.')
     end
