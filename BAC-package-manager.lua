@@ -48,21 +48,6 @@ if args[1] == "--packages" or args[1] == "-l" then
     end
 end
 
---install statment
-
-if args[1] == "install" then
-    if args[2] == "" then
-        print("please provide a package")
-    end
-    for i = 1, #packages do
-        if  packages[i] == args[2] then
-            installPackage() --install the package
-        else
-            print('the package: "', args[2], '" could not be found.')
-        end
-    end
-end
-
 --update
 
 if args[1] == "update" then
@@ -113,6 +98,21 @@ local function installPackage()
             print("installing bir0fetch...")
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/bir0fetch.lua", "bir0fetch.lua")
             print("finished!")
+        end
+    end
+end
+
+--install statment
+
+if args[1] == "install" then
+    if args[2] == "" then
+        print("please provide a package")
+    end
+    for i = 1, #packages do
+        if  packages[i] == args[2] then
+            installPackage() --install the package
+        else
+            print('the package: "', args[2], '" could not be found.')
         end
     end
 end
