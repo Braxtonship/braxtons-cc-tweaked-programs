@@ -62,7 +62,7 @@ if args[1] == "update" or args[1] == "reinstall" then
         shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BAC-package-manager.lua", "bac.lua")
         print("finished!")
         term.setTextColour(colours.green)
-        print("updated to latest version: ", version,)
+        print("updated to latest version: ", version)
         term.setTextColour(colours.white)
     else
         print("update BAC package manager")
