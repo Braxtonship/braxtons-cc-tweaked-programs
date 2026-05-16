@@ -4,6 +4,7 @@ local version = "TESTING BUILD 0.0.1"
 local packages = {
     "bir0fetch"
 }
+
 local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
     "update (will get the newest version of BAC package manager)",
