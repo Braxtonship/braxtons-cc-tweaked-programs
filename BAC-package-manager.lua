@@ -55,7 +55,7 @@ if args[1] == "install" then
         print("please provide a package")
     end
     
-    if table.find(packages, args[2]) do
+    if table.find(packages, args[2]) then
         function installPackage()
     else
         
