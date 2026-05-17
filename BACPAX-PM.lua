@@ -123,8 +123,9 @@ end
 
 --update
 
-if args[1] == "update" or args[1] == "reinstall" then
+if args[1] == "update" or args[1] == "reinstall" or atgs[1] == "-u" then
     if args[2] == "-y" then
+        term.clear()
         print("update BACPAX package manager")
         print("---------------------------")
         print("updating BACPAX...")
@@ -135,6 +136,7 @@ if args[1] == "update" or args[1] == "reinstall" then
         print("finished!")
         shell.run("bacpax", "-v", "getVerScript")
     else
+        term.clear()
         print("update BACPAX package manager")
         print("---------------------------")
         print("are you sure you want to update BACPAX package manager?")
