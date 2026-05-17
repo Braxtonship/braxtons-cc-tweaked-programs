@@ -414,8 +414,10 @@ if args[1] == "install" then
     for i = 1, #packages do
         if  packages[i] == args[2] then
             installPackage() --install the package
+            return
         else
             print('the package: "', args[2], '" could not be found.')
+            return
         end
     end
 end
