@@ -6,7 +6,7 @@ print("computer id: ", os.getComputerID())
 if not os.getComputerLabel() == nil then
     print("computer label: ", os.getComputerLabel())
 else
-    print("computer label: n/a")
+    print("computer label: N/A")
 end
 print("computer has been running for: ", os.clock())
 print("-----------------")
