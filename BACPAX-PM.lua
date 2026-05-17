@@ -123,7 +123,7 @@ end
 
 --update
 
-if args[1] == "update" or args[1] == "reinstall" or atgs[1] == "-u" then
+if args[1] == "update" or args[1] == "reinstall" or args[1] == "-u" then
     if args[2] == "-y" then
         term.clear()
         print("update BACPAX package manager")
