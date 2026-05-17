@@ -3,8 +3,8 @@
 if not fs.exists("dirBacpax") then
     print("bacpax directory not found...")
     print("creating directory(s)...")
-    fs.makedir("dirBacpax")
-    fs.makedir("dirBacpax/cfg")
+    fs.makeDir("dirBacpax")
+    fs.makeDir("dirBacpax/cfg")
     print("made directory!")
     print("-----------------------")
 end
