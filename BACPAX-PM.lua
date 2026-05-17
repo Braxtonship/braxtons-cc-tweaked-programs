@@ -416,7 +416,8 @@ if args[1] == "install" then
             installPackage() --install the package
             return
         else
-            print('the package: "', args[2], '" could not be found.')
+            print('the package: "',args[2],'" could not be found.')
+            print("did you type it correctly? (use -l or --packages)")
             return
         end
     end
