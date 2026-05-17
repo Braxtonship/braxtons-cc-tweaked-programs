@@ -10,6 +10,7 @@ else
 end
 print("computer has been running for: ", os.clock())
 print("-----------------")
+print("colour display:")
 term.setTextColour(colours.black)
 print("B")
 term.setTextColour(colours.white)
