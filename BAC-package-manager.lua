@@ -120,9 +120,6 @@ local function installPackage()
             print("installing birfetch...")
             print("---------------------------")
             term.setTextColour(colours.yellow)
-            if fs.exists("birfetch.lua") then
-                shell.run("rm", "birfetch.lua")
-            end
             shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
             term.setTextColour(colours.white)
             print("finished!")
@@ -137,9 +134,6 @@ local function installPackage()
             if input == "y" then
                 print("installing...")
                 term.setTextColour(colours.yellow)
-                if fs.exists("birfetch.lua") then
-                    shell.run("rm", "birfetch.lua")
-                end
                 shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
                 term.setTextColour(colours.white)
                 print("finished!")
@@ -158,9 +152,6 @@ local function installPackage()
             print("installing googol...")
             print("------------------------")
             term.setTextColour(colours.yellow)
-            if fs.exists("googol") then
-                shell.run("rm", "googol")
-            end
             shell.run("pastebin", "get", "EmssRF7b", "googol")
             term.setTextColour(colours.white)
             print("finished!")
@@ -197,12 +188,6 @@ local function installPackage()
             term.setTextColour(colours.white)
             print("---------------------------")
             term.setTextColour(colours.yellow)
-            if fs.exists("lockunlock") then
-                shell.run("rm", "lockunlock")
-            end
-            if fs.exists("startup") then
-                shell.run("rm", "startup")
-            end
             shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
             shell.run("pastebin", "get", "uUSrzyyx", "startup")
             term.setTextColour(colours.white)
@@ -222,12 +207,6 @@ local function installPackage()
             if input == "y" then
                 print("installing...")
                 term.setTextColour(colours.yellow)
-                if fs.exists("lockunlock") then
-                    shell.run("rm", "lockunlock")
-                end
-                if fs.exists("startup") then
-                    shell.run("rm", "startup")
-                end
                 shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
                 shell.run("pastebin", "get", "uUSrzyyx", "startup")
                 term.setTextColour(colours.white)
@@ -246,9 +225,6 @@ local function installPackage()
             print("installing far...")
             print("------------------------")
             term.setTextColour(colours.yellow)
-            if fs.exists("far") then
-                shell.run("rm", "far")
-            end
             shell.run("wget", "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far", "far")
             term.setTextColour(colours.white)
             print("finished!")
@@ -264,9 +240,6 @@ local function installPackage()
                 print("installing...")
                 print("---------------------------")
                 term.setTextColour(colours.yellow)
-                if fs.exists("far") then
-                    shell.run("rm", "far")
-                end
                 shell.run("wget", "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far", "far")
                 term.setTextColour(colours.white)
                 print("finished!")
@@ -316,9 +289,6 @@ local function installPackage()
             print("installing virtualOS terminal edition...")
             print("------------------------")
             term.setTextColour(colours.yellow)
-            if fs.exists("virtualos") then
-                shell.run("rm", "virtualos")
-            end
             shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
             term.setTextColour(colours.white)
             print("finished!")
@@ -334,9 +304,6 @@ local function installPackage()
                 print("installing...")
                 print("---------------------------")
                 term.setTextColour(colours.yellow)
-                if fs.exists("virtualos") then
-                    shell.run("rm", "virtualos")
-                end
                 shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
                 term.setTextColour(colours.white)
                 print("finished!")
@@ -358,9 +325,6 @@ local function installPackage()
             term.setTextColour(colours.white)
             print("---------------------------")
             term.setTextColour(colours.yellow)
-            if fs.exists("virtualos") then
-                shell.run("rm", "virtualos")
-            end
             shell.run("pastebin", "run", "B05YGPPy")
             shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
             term.setTextColour(colours.white)
