@@ -56,7 +56,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "TESTING BUILD v0.15"
+local version = "OFFICAL BUILD v1"
 local packages = {
     "birfetch",
     "googol",
