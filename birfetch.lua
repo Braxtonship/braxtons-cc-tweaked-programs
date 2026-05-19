@@ -1,6 +1,7 @@
 term.clear()
-print("birfetch:")
+print("birfetch V1.5:")
 print("-----------------")
+print("lua: ", _VERSION)
 print("running: ", os.version())
 print("computer id: ", os.getComputerID())
 if not ( os.getComputerLabel() == nil ) then
