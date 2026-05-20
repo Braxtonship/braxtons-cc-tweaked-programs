@@ -1,16 +1,28 @@
 -- == extra setup == --
 
-if not fs.exists("dirBacpax") then
-    print("bacpax directory not found...")
-    print("creating directory(s)...")
-    fs.makeDir("dirBacpax")
-    fs.makeDir("dirBacpax/cfg")
-    print("made directory!")
-    print("-----------------------")
+if not fs.exists(".BacpaxDir") then
+    if fs.exists("dirBacpax") then
+        print("found old directory method.")
+        print("replacing...")
+        shell.run("rm dirBacpax")
+        print("deleted...")
+        print("-----------")
+        print("making new...")
+        fs.makeDir(".BacpaxDir")
+        fs.makeDir(".BacpaxDir/cfg")
+        print("Complete!")
+    else
+        print("bacpax directory not found...")
+        print("creating directory(s)...")
+        fs.makeDir(".BacpaxDir")
+        fs.makeDir(".BacpaxDir/cfg")
+        print("made directory!")
+        print("-----------------------")
+    end
 end
 
 --old version replacer
-if not fs.exists("dirBacpax/cfg/keepOldBacpax.lua") then
+if not fs.exists(".BacpaxDir/cfg/keepOldBacpax.lua") then
     if fs.exists("bac") then
         print("quickClean:")
         print("found old version of BACPAX.")
@@ -30,9 +42,9 @@ if not fs.exists("dirBacpax/cfg/keepOldBacpax.lua") then
             print("-----------------------")
             print("you have chosen to keep old BACPAX")
             print("updating config")
-            local file = fs.open("dirBacpax/cfg/keepOldBacpax.lua", "w")
+            local file = fs.open(".BacpaxDir/cfg/keepOldBacpax.lua", "w")
             if file then
-                file.write("True")
+                file.write('print("hello. nothing to see here...")')
                 file.close()
                 print("success!")
             else
