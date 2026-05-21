@@ -68,18 +68,18 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "ALPHA RELEASE BUILD v1.1"
+local version = "ALPHA RELEASE BUILD v1.3"
 local packages = {
     {
         name = "birfetch",
-        description = "",
+        description = "a screen fetch like program.",
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua",
         filename = "birfetch.lua"
     },
     {
         name = "googol",
-        description = "",
+        description = "pretty self explainatory. its google kinda.",
         method = "pastebin",
         action = "get",
         value = "EmssRF7b",
@@ -87,7 +87,7 @@ local packages = {
     },
     {
         name = "password-program",
-        description = "",
+        description = "for doors and stuff.",
         method = "pastebin",
         action = "get",
         value = "8tQ1vyhh",
@@ -103,14 +103,14 @@ local packages = {
     },
     {
         name = "far",
-        description = "",
+        description = "a remote access program.",
         method = "wget",
         value = "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far",
         filename = "far"
     },
     {
         name = "filex",
-        description = "",
+        description = "a file explorer.",
         method = "pastebin",
         action = "run",
         value = "AVqAFH8h",
@@ -118,14 +118,14 @@ local packages = {
     },
     {
         name = "virtualos-cmd",
-        description = "",
+        description = "a virtual sandbox for computer craft stuff.",
         method = "wget",
         value = "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua",
         filename = "virtualos"
     },
     {
         name = "virtualos-gui",
-        description = "",
+        description = "gui version of virtual OS.",
         method = "pastebin",
         action = "run",
         value = "B05YGPPy",
