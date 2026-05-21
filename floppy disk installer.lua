@@ -20,7 +20,7 @@ if args[1] == "-y" then
     disk.eject("right")
     disk.eject("front")
     disk.eject("back")
-elseif args[1] == "-s"
+elseif args[1] == "-s" then
     print("installing...")
     term.setTextColour(colours.yellow)
     shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BACPAX-PM.lua", "bacpax")
