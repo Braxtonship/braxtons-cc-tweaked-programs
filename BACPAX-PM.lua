@@ -249,7 +249,7 @@ end
 -- == main code (packages section) == --
 
 local function installPackage(p)
-    print("selected package ", `p.name)
+    print("selected package ", p.name)
     print("---------------------------")
     if args[3] == "-y" then
         print("installing ", p.name, "...")
