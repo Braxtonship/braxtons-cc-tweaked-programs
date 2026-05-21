@@ -70,13 +70,67 @@ end
 local args = { ... }
 local version = "ALPHA RELEASE BUILD v1.1"
 local packages = {
-    "birfetch",
-    "googol",
-    "password-program",
-    "far",
-    "filex",
-    "virtualos-cmd",
-    "virtualos-gui"
+    {
+        name = "birfetch",
+        description = "",
+        method = "wget",
+        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua",
+        filename = "birfetch.lua"
+    },
+    {
+        name = "googol",
+        description = "",
+        method = "pastebin",
+        action = "get",
+        value = "EmssRF7b",
+        filename = "googol"
+    },
+    {
+        name = "password-program",
+        description = "",
+        method = "pastebin",
+        action = "get",
+        value = "8tQ1vyhh",
+        filename = "lockunlock",
+        dependencies = {
+            {
+                method = "pastebin",
+                action = "get",
+                value = "uUSrzyyx",
+                filename = "startup.lua"
+            }
+        }
+    },
+    {
+        name = "far",
+        description = "",
+        method = "wget",
+        value = "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far",
+        filename = "far"
+    },
+    {
+        name = "filex",
+        description = "",
+        method = "pastebin",
+        action = "run",
+        value = "AVqAFH8h",
+        filename = "FileX"
+    },
+    {
+        name = "virtualos-cmd",
+        description = "",
+        method = "wget",
+        value = "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua",
+        filename = "virtualos"
+    },
+    {
+        name = "virtualos-gui",
+        description = "",
+        method = "pastebin",
+        action = "run",
+        value = "B05YGPPy",
+        filename = "virtualos-manager"
+    }
 }
 
 local helpCommands = {
@@ -128,13 +182,34 @@ if args[1] == "--packages" or args[1] == "-l" then
     print("listing all packages...")
     print("reminder: packages are case sensitive!")
     print("-----------------------")
-    for i = 1, #packages do
-        print(packages[i])
+    for i, p in ipairs(packages) do
+        print(p.name,  " => ", p.description)
     end
 end
 
---update
+local function download(p)
+    if p.method == 'wget' then
+        shell.run("wget", p.value, p.filename)
+    elseif p.method == 'pastebin' then
+        if p.action == 'get' then
+            shell.run("pastebin", "get", p.value, p.filename)
+        elseif p.action == 'run' then
+            shell.run("pastebin", "run", p.value)            
+        else
+            term.setTextColour(colours.red)
+            print("Unknown pastebin action")
+            return false
+        end
+    else
+        term.setTextColour(colours.red)
+        print("Unknown download method")
+        return false
+    end
+    
+    return true
+end
 
+--update
 if args[1] == "update" or args[1] == "reinstall" or args[1] == "-u" then
     if args[2] == "-y" then
         term.clear()
@@ -173,351 +248,49 @@ end
         
 -- == main code (packages section) == --
 
-local function installPackage()
-    -- by me
-    if args[2] == "birfetch" then
-        if args[3] == "-y" then
-            print("selected package birfetch")
-            print("---------------------------")
-            print("installing birfetch...")
-            print("---------------------------")
-            term.setTextColour(colours.yellow)
-            if fs.exists("birfetch.lua") then
-                term.setTextColour(colours.white)
-                print("found original file...")
-                print("deleting and replacing with latest version...")
-                term.setTextColour(colours.yellow)
-                shell.run("rm", "birfetch.lua")
-                term.setTextColour(colours.white)
-                print("done deleting... reinstalling latest version")
-                term.setTextColour(colours.yellow)
-            end
-            shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
+local function installPackage(p)
+    print("selected package ", `p.name)
+    print("---------------------------")
+    if args[3] == "-y" then
+        print("installing ", p.name, "...")
+        print("---------------------------")
+    else
+        print("are you sure you want to install ", p.name, "?")
+        print("---------------------------")
+        print("(Y/N)")
+        local input = read()
+        if input == "y" then
+            print("installing...")
         else
-            print("selected package birfetch")
-            print("---------------------------")
-            print("are you sure you want to install birfetch?")
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                term.setTextColour(colours.yellow)
-                if fs.exists("birfetch.lua") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "birfetch.lua")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
+            print("aborting installation...")
+            return
+        end
+        term.setTextColour(colours.yellow)
+        if fs.exists(p.filename) then
+            term.setTextColour(colours.white)
+            print("found original file...")
+            print("deleting and replacing with latest version...")
+            term.setTextColour(colours.yellow)
+            shell.run("rm", p.filename)
+            term.setTextColour(colours.white)
+            print("done deleting... reinstalling latest version")
+            term.setTextColour(colours.yellow)
+        end
+        
+        if download(p) == false then
+            return
+        end
+        
+        if p.dependencies then
+            for i, d in ipairs(p.dependencies) do
+                if download(d) == false then
+                    return
                 end
-                shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua", "birfetch.lua")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
             end
         end
-    end
-    -- not by me
-    if args[2] == "googol" then
-        if args[3] == "-y" then
-            print("selected package googol")
-            print("---------------------------")
-            print("installing googol...")
-            print("------------------------")
-            term.setTextColour(colours.yellow)
-            shell.run("pastebin", "get", "EmssRF7b", "googol")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
-        else
-            print("selected package googol")
-            print("---------------------------")
-            print("are you sure you want to install googol?")
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                print("---------------------------")
-                term.setTextColour(colours.yellow)
-                if fs.exists("googol") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "googol")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-                shell.run("pastebin", "get", "EmssRF7b", "googol")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
-            end
-        end
-    end
-    if args[2] == "password-program" then
-        if args[3] == "-y" then
-            print("selected package password-program")
-            print("---------------------------")
-            print("installing password-program (with dependencies)")
-            print("dependencies:")
-            term.setTextColour(colours.green)
-            print("password-program-startup")
-            term.setTextColour(colours.white)
-            print("---------------------------")
-            term.setTextColour(colours.yellow)
-            if fs.exists("lockunlock.lua") or fs.exists("startup.lua") then
-                term.setTextColour(colours.white)
-                print("found original files...")
-                print("deleting and replacing with latest version...")
-                term.setTextColour(colours.yellow)
-                shell.run("rm", "lockunlock")
-                shell.run("rm", "startup")
-                term.setTextColour(colours.white)
-                print("done deleting... reinstalling latest version")
-                term.setTextColour(colours.yellow)
-            end
-            shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
-            shell.run("pastebin", "get", "uUSrzyyx", "startup")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
-        else
-            print("selected package password-program")
-            print("---------------------------")
-            print("are you sure you want to install password-program and its dependencies?")
-            print("dependencies:")
-            term.setTextColour(colours.green)
-            print("password-program-startup")
-            term.setTextColour(colours.white)
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                term.setTextColour(colours.yellow)
-                if fs.exists("lockunlock.lua") or fs.exists("startup.lua") then
-                    term.setTextColour(colours.white)
-                    print("found original files...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "lockunlock")
-                    shell.run("rm", "startup")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-                shell.run("pastebin", "get", "8tQ1vyhh", "lockunlock")
-                shell.run("pastebin", "get", "uUSrzyyx", "startup")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
-            end
-        end
-    end
-    if args[2] == "far" then
-        if args[3] == "-y" then
-            print("selected package far")
-            print("---------------------------")
-            print("installing far...")
-            print("------------------------")
-            term.setTextColour(colours.yellow)
-            shell.run("wget", "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far", "far")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
-        else
-            print("selected package far")
-            print("---------------------------")
-            print("are you sure you want to install far?")
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                print("---------------------------")
-                term.setTextColour(colours.yellow)
-                if fs.exists("far") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "far")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-                shell.run("wget", "https://raw.githubusercontent.com/InternetUnexplorer/CCJam-2016/master/far", "far")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
-            end
-        end
-    end
-    if args[2] == "filex" then
-        if args[3] == "-y" then
-            print("selected package FileX")
-            print("---------------------------")
-            print("installing FileX...")
-            print("------------------------")
-            term.setTextColour(colours.yellow)
-            shell.run("pastebin", "run", "AVqAFH8h")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
-        else
-            print("selected package FileX")
-            print("---------------------------")
-            print("are you sure you want to install FileX?")
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                print("---------------------------")
-                term.setTextColour(colours.yellow)
-                shell.run("pastebin", "run", "AVqAFH8h")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
-            end
-        end
-    end
-    if args[2] == "virtualos-cmd" then
-        if args[3] == "-y" then
-            print("selected package virtualOS terminal edition")
-            print("---------------------------")
-            print("installing virtualOS terminal edition...")
-            print("------------------------")
-            term.setTextColour(colours.yellow)
-            if fs.exists("virtualos") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "virtualos")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-            shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
-        else
-            print("selected package virtualOS terminal edition")
-            print("---------------------------")
-            print("are you sure you want to virtualOS terminal edition?")
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                print("---------------------------")
-                term.setTextColour(colours.yellow)
-                if fs.exists("virtualos") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "virtualos")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-                shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
-            end
-        end
-    end
-    if args[2] == "virtualos-gui" then
-        if args[3] == "-y" then
-            print("selected virtualOS gui edition")
-            print("---------------------------")
-            print("installing virtualOS gui edition (with dependencies)")
-            print("dependencies:")
-            term.setTextColour(colours.green)
-            print("virtualOS terminal edition")
-            term.setTextColour(colours.white)
-            print("---------------------------")
-            term.setTextColour(colours.yellow)
-            if fs.exists("virtualos") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "virtualos")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-            shell.run("pastebin", "run", "B05YGPPy")
-            shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
-            term.setTextColour(colours.white)
-            print("finished!")
-            return
-        else
-            print("selected package virtualOS gui edition")
-            print("---------------------------")
-            print("are you sure you want to install virtualOS gui edition and its dependencies?")
-            print("dependencies:")
-            term.setTextColour(colours.green)
-            print("virtualOS terminal edition")
-            term.setTextColour(colours.white)
-            print("---------------------------")
-            print("(Y/N)")
-            local input = read()
-            if input == "y" then
-                print("installing...")
-                term.setTextColour(colours.yellow)
-                if fs.exists("virtualos") then
-                    term.setTextColour(colours.white)
-                    print("found original file...")
-                    print("deleting and replacing with latest version...")
-                    term.setTextColour(colours.yellow)
-                    shell.run("rm", "virtualos")
-                    term.setTextColour(colours.white)
-                    print("done deleting... reinstalling latest version")
-                    term.setTextColour(colours.yellow)
-                end
-                shell.run("pastebin", "run", "B05YGPPy")
-                shell.run("wget", "https://gitlab.com/Wilma456/Computercraft/raw/master/Programs/virtualos.lua", "virtualos")
-                term.setTextColour(colours.white)
-                print("finished!")
-                return
-            else
-                print("aborting installation...")
-                return
-            end
-        end
+
+        term.setTextColour(colours.white)
+        print("finished!")
     end
 end
 
@@ -527,11 +300,11 @@ if args[1] == "install" then
     if args[2] == "" then
         print("please provide a package")
     end
-    for i = 1, #packages do
-        if  packages[i] == args[2] then
-            installPackage() --install the package
+
+    for i, p in ipairs(packages) do
+        if  p.name == args[2]:lower() then
+            installPackage(p) --install the package
             return
-        else
         end
     end
     print('the package: "',args[2],'" could not be found.')
