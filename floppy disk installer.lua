@@ -1,9 +1,5 @@
 -- install this on a floppy disk only
 term.clear()
-print("Would you like to install BAC package manager?")
-term.setTextColour(colours.red)
-print("Y/N")
-term.setTextColour(colours.white)
 local args = { ... }
 if args[1] == "-y" then
     print("installing...")
@@ -27,6 +23,10 @@ elseif args[1] == "-s" then
     term.setTextColour(colours.green)
     print("installation complete!")
 else
+    print("Would you like to install BACPAX package manager?")
+    term.setTextColour(colours.red)
+    print("Y/N")
+    term.setTextColour(colours.white)
     local input = read()
     if input == "y" then
         print("installing...")
@@ -45,5 +45,11 @@ else
         disk.eject("back")
     else
         print("installation aborted...")
+        disk.eject("top")
+        disk.eject("bottom")
+        disk.eject("left")
+        disk.eject("right")
+        disk.eject("front")
+        disk.eject("back")
     end
 end
