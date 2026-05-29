@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "ALPHA RELEASE BUILD v1.3.1"
+local version = "ALPHA RELEASE BUILD v1.4"
 local packages = {
     {
         name = "birfetch",
@@ -131,6 +131,22 @@ local packages = {
         value = "B05YGPPy",
         filename = "virtualos-manager"
     }
+    {
+        name = "brainf interpreter",
+        description = "a brainf interpreter. dunno why you would want it but, its here",
+        method = "pastebin",
+        action = "get",
+        value = "0AXaibqV",
+        filename = "brainf"
+    },
+    {
+        name = "ccBox",
+        description = "another virtual machine",
+        method = "pastebin",
+        action = "get",
+        value = "nrSC7JcH",
+        filename = "ccbox"
+    },
 }
 
 local helpCommands = {
@@ -170,7 +186,7 @@ if args[1] == "--version" or args[1] == "-v" then
         print("BACPAX - package manager")
         print("---------------------")
         term.setTextColour(colours.red)
-        print("BACPAX is a package manager for cc:tweaked, simular to the linux APT package manager.")
+        print("BACPAX is a package manager for cc:tweaked, very lightly based on the linux APT package manager.")
         term.setTextColour(colours.green)
         print("version: ", version)
     end
@@ -178,14 +194,24 @@ end
 
 --package lookup
 
-if args[1] == "--packages" or args[1] == "-l" then
+if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
     print("listing all packages...")
-    print("reminder: packages are case sensitive!")
     print("-----------------------")
     for i, p in ipairs(packages) do
-        print(p.name,  " => ", p.description)
+        print(p.name)
+        if p.description == "" then
+            term.setTextColour(colours.yellow)
+            print("=> ", "Description not avalible.")
+            term.setTextColour(colours.white)
+        else
+            term.setTextColour(colours.yellow)
+            print("=> ", p.description)
+            term.setTextColour(colours.white)
+        end
     end
 end
+
+--pastebin download method
 
 local function download(p)
     if p.method == 'wget' then
