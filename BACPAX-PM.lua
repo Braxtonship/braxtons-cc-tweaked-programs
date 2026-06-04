@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "ALPHA RELEASE BUILD v1.4"
+local version = "HOTFIX v1.4.1"
 local packages = {
     {
         name = "birfetch",
@@ -130,7 +130,7 @@ local packages = {
         action = "run",
         value = "B05YGPPy",
         filename = "virtualos-manager"
-    }
+    },
     {
         name = "brainf interpreter",
         description = "a brainf interpreter. dunno why you would want it but, its here",
