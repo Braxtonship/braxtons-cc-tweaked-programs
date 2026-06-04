@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "ALPHA v1.4 HOTFIX 2"
+local version = "ALPHA v1.4.5"
 local packages = {
     {
         name = "birfetch",
@@ -147,6 +147,13 @@ local packages = {
         value = "nrSC7JcH",
         filename = "ccbox"
     },
+    {
+        name = "birDE",
+        description = "a desktop environment picker made by me. (actual environments probably not also its not finished. just blank file rn)",
+        method = "wget",
+        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDE",
+        filename = "birde"
+    },
 }
 
 local helpCommands = {
@@ -195,10 +202,11 @@ end
 --package lookup
 
 if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
-    print("listing all packages...")
+    print("listing all packages... (slow because scrolling is not yet implemented)")
     print("-----------------------")
     for i, p in ipairs(packages) do
         print(p.name)
+        os.sleep(1)
         if p.description == "" then
             term.setTextColour(colours.yellow)
             print("=> ", "Description not avalible.")
@@ -247,7 +255,9 @@ if args[1] == "update" or args[1] == "reinstall" or args[1] == "-u" then
         shell.run("wget", "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BACPAX-PM.lua", "bacpax")
         term.setTextColour(colours.white)
         print("finished!")
-        shell.run("bacpax", "-v", "getVerScript")
+        term.setTextColour(colours.yellow)
+        shell.run('wget run "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BACPAX-PM.lua" -v getVerScript')
+        term.setTextColour(colours.white)
     else
         term.clear()
         print("update BACPAX package manager")
