@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "HOTFIX v1.4.1"
+local version = "ALPHA v1.4 HOTFIX 2"
 local packages = {
     {
         name = "birfetch",
@@ -132,7 +132,7 @@ local packages = {
         filename = "virtualos-manager"
     },
     {
-        name = "brainf interpreter",
+        name = "brainf-interpreter",
         description = "a brainf interpreter. dunno why you would want it but, its here",
         method = "pastebin",
         action = "get",
