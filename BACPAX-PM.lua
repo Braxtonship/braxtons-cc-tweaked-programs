@@ -1,5 +1,5 @@
 -- == extra setup == --
- 
+
 if not fs.exists(".BacpaxDir") then
     if fs.exists("dirBacpax") then
         print("found old directory method.")
