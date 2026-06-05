@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "ALPHA v1.4.5"
+local version = "ALPHA v1.4.5 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -140,7 +140,7 @@ local packages = {
         filename = "brainf"
     },
     {
-        name = "ccBox",
+        name = "ccbox",
         description = "another virtual machine",
         method = "pastebin",
         action = "get",
@@ -148,10 +148,10 @@ local packages = {
         filename = "ccbox"
     },
     {
-        name = "birDE",
+        name = "birdes",
         description = "a desktop environment picker made by me. (actual environments probably not also its not finished. just blank file rn)",
         method = "wget",
-        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDE",
+        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDES",
         filename = "birde"
     },
 }
