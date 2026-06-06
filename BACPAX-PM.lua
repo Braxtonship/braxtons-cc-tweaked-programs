@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.0 HOTFIX 2"
+local version = "OFFICAL RELEASE v2.1"
 local packages = {
     {
         name = "birfetch",
@@ -304,8 +304,19 @@ local function installPackage(p)
     print("selected package ", p.name)
     print("---------------------------")
     if args[3] == "-y" then
-        print("installing ", p.name, "...")
+        print("installing", p.name, "...", "and any dependencies")
         print("---------------------------")
+        term.setTextColour(colours.yellow)
+        if fs.exists(p.filename) then
+            term.setTextColour(colours.white)
+            print("found original file...")
+            print("deleting and to replace with latest version...")
+            term.setTextColour(colours.yellow)
+            shell.run("rm", p.filename)
+            term.setTextColour(colours.white)
+            print("done deleting... reinstalling latest version")
+            term.setTextColour(colours.yellow)
+        end
     else
         if p.dependencies then
             print("are you sure you want to install ", p.name, " and its dependencies?")
