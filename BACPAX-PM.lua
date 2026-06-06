@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.1 HOTFIX 1"
+local version = "OFFICAL RELEASE v2.2"
 local packages = {
     {
         name = "birfetch",
@@ -222,7 +222,6 @@ if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
     print("-----------------------")
     for i, p in ipairs(packages) do
         print(p.name)
-        os.sleep(1)
         if p.description == "" then
             term.setTextColour(colours.yellow)
             print("=> ", "Description not avalible.")
@@ -232,6 +231,7 @@ if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
             print("=> ", p.description)
             term.setTextColour(colours.white)
         end
+        os.sleep(1)
     end
 end
 
@@ -391,7 +391,7 @@ end
 if args[1] == "install" then
     if args[2] == "" then
         print("please provide a package")
-    end
+    else
 
     for i, p in ipairs(packages) do
         if  p.name == args[2]:lower() then
@@ -402,4 +402,5 @@ if args[1] == "install" then
     print('the package: "',args[2],'" could not be found.')
     print("did you type it correctly? (use -l or --packages)")
     return
+    end
 end
