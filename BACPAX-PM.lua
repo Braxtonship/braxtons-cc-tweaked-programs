@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.0 HOTFIX 1"
+local version = "OFFICAL RELEASE v2.0 HOTFIX 2"
 local packages = {
     {
         name = "birfetch",
@@ -153,7 +153,7 @@ local packages = {
         description = "a desktop environment picker made by me. (actual environments probably not also its not finished. just blank file rn)",
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDES.lua",
-        filename = "birdes"
+        filename = "birdes",
         dependencies = {
             {
                 method = "wget",
