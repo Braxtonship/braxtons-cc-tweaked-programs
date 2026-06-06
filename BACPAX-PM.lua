@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.0"
+local version = "OFFICAL RELEASE v2.0 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -97,7 +97,7 @@ local packages = {
                 method = "pastebin",
                 action = "get",
                 value = "uUSrzyyx",
-                filename = "startup.lua"
+                filename = "startup.lua",
                 name = "startup"
             }
         }
@@ -158,7 +158,7 @@ local packages = {
             {
                 method = "wget",
                 value = "run https://raw.githubusercontent.com/Pyroxenium/Basalt/refs/heads/master/docs/install.lua",
-                filename = "release latest.lua"
+                filename = "release latest.lua",
                 name = "basalt"
             }
         }
