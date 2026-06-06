@@ -1,6 +1,6 @@
 --setup
 local args = {...}
-local version = "V0.1.3 TESTING"
+local version = "V0.1.4 TESTING"
 local basalt = require("basalt")
 local brString = ("-----------------------------------------------------------")
 --main code
@@ -16,7 +16,7 @@ mainLabel:setPosition((term.getSize()-mainLabel:getSize())/2, 1)
 mainLabel:setTextAlign("center")
 
 local mainLabel2 = mainFrame:addLabel()
-mainLabel2:setText("/bir Desktop Selector/")
+mainLabel2:setText("// bir Desktop Environment Selector //")
 mainLabel2:setPosition((term.getSize()-mainLabel2:getSize())/2, 4)
 
 local mainLabel3 = mainFrame:addLabel()
