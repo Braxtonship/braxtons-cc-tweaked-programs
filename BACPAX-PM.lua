@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.2"
+local version = "OFFICAL RELEASE v2.2 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -389,10 +389,11 @@ end
 --install statment
 
 if args[1] == "install" then
-    if args[2] == "" then
-        print("please provide a package")
+    if #args == 1 then
+        print("please provide a more arguments...")
+        return
     else
-
+        
     for i, p in ipairs(packages) do
         if  p.name == args[2]:lower() then
             installPackage(p) --install the package
