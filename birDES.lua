@@ -1,4 +1,4 @@
---setup 
+--setup
 local args = {...}
 local version = "V0.1.1 TESTING"
 local basalt = require("basalt")
@@ -28,12 +28,12 @@ br1:setPosition(1, 5)
 br1:setText(brString)
 
 local warning = mainFrame:addLabel()
-warning:setFontSize(2)
+warning:setFontSize(1)
 warning:setText("STILL UNDER DEVELOPMENT... CHECK BACK LATER...")
 warning:setPosition((term.getSize()-warning:getSize())/2, 7)
 
 local warning2 = mainFrame:addLabel()
-warning2:setFontSize(2)
+warning2:setFontSize(1)
 warning2:setText(version)
 warning2:setPosition((term.getSize()-warning2:getSize())/2, 7)
   
