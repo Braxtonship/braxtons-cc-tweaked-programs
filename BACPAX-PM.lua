@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "ALPHA v1.4.5 HOTFIX 2"
+local version = "OFFICAL RELEASE v2.0"
 local packages = {
     {
         name = "birfetch",
@@ -98,6 +98,7 @@ local packages = {
                 action = "get",
                 value = "uUSrzyyx",
                 filename = "startup.lua"
+                name = "startup"
             }
         }
     },
@@ -153,6 +154,21 @@ local packages = {
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDES.lua",
         filename = "birdes"
+        dependencies = {
+            {
+                method = "wget",
+                value = "run https://raw.githubusercontent.com/Pyroxenium/Basalt/refs/heads/master/docs/install.lua",
+                filename = "release latest.lua"
+                name = "basalt"
+            }
+        }
+    },
+    {
+        name = "basalt",
+        description = "a very cool GUI library",
+        method = "wget",
+        value = "run https://raw.githubusercontent.com/Pyroxenium/Basalt/refs/heads/master/docs/install.lua",
+        filename = "release latest.lua"
     },
 }
 
@@ -219,7 +235,7 @@ if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
     end
 end
 
---pastebin download method
+--download methods
 
 local function download(p)
     if p.method == 'wget' then
@@ -291,9 +307,23 @@ local function installPackage(p)
         print("installing ", p.name, "...")
         print("---------------------------")
     else
-        print("are you sure you want to install ", p.name, "?")
-        print("---------------------------")
-        print("(Y/N)")
+        if p.dependencies then
+            print("are you sure you want to install ", p.name, " and its dependencies?")
+            print("---------------------------")
+            print("dependencies:")
+            term.setTextColour(colours.yellow)
+            for i, v in ipairs(p.dependencies) do
+                print(v.name)
+            end
+            term.setTextColour(colours.white)
+            print("---------------------------")
+            print("(Y/N)")
+        else
+            print("are you sure you want to install ", p.name, "?")
+            print("---------------------------")
+            print("(Y/N)")
+        end
+        
         local input = read()
         if input == "y" then
             print("installing...")
@@ -305,7 +335,7 @@ local function installPackage(p)
         if fs.exists(p.filename) then
             term.setTextColour(colours.white)
             print("found original file...")
-            print("deleting and replacing with latest version...")
+            print("deleting and to replace with latest version...")
             term.setTextColour(colours.yellow)
             shell.run("rm", p.filename)
             term.setTextColour(colours.white)
