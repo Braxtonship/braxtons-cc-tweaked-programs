@@ -1,6 +1,6 @@
 --setup
 local args = {...}
-local version = "V0.1.1 TESTING"
+local version = "V0.1.2 TESTING"
 local basalt = require("basalt")
 local brString = ("-----------------------------------------------------------")
 --main code
@@ -35,7 +35,7 @@ warning:setPosition((term.getSize()-warning:getSize())/2, 7)
 local warning2 = mainFrame:addLabel()
 warning2:setFontSize(1)
 warning2:setText(version)
-warning2:setPosition((term.getSize()-warning2:getSize())/2, 7)
+warning2:setPosition((term.getSize()-warning2:getSize())/2, 8)
   
 basalt.autoUpdate()
 elseif args[1]:lower() == -v then
