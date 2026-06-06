@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.1"
+local version = "OFFICAL RELEASE v2.1 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -317,6 +317,21 @@ local function installPackage(p)
             print("done deleting... reinstalling latest version")
             term.setTextColour(colours.yellow)
         end
+        
+        if download(p) == false then
+            return
+        end
+        
+        if p.dependencies then
+            for i, d in ipairs(p.dependencies) do
+                if download(d) == false then
+                    return
+                end
+            end
+        end
+
+        term.setTextColour(colours.white)
+        print("finished!")
     else
         if p.dependencies then
             print("are you sure you want to install ", p.name, " and its dependencies?")
