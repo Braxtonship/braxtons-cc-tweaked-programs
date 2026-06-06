@@ -1,6 +1,6 @@
 --setup
 local args = {...}
-local version = "V0.1.2 TESTING"
+local version = "V0.1.3 TESTING"
 local basalt = require("basalt")
 local brString = ("-----------------------------------------------------------")
 --main code
@@ -38,6 +38,6 @@ warning2:setText(version)
 warning2:setPosition((term.getSize()-warning2:getSize())/2, 8)
   
 basalt.autoUpdate()
-elseif args[1]:lower() == -v then
+elseif args[1]:lower() == "-v" then
   print("birDES is currently updated up to: ", version)
 end
