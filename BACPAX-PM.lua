@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.2 HOTFIX 1"
+local version = "OFFICAL RELEASE v2.3"
 local packages = {
     {
         name = "birfetch",
@@ -150,7 +150,7 @@ local packages = {
     },
     {
         name = "birdes",
-        description = "a desktop environment picker made by me. (actual environments probably not also its not finished. just blank file rn)",
+        description = "a desktop environment selector. (using basalt)",
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDES.lua",
         filename = "birdes",
@@ -304,7 +304,7 @@ local function installPackage(p)
     print("selected package ", p.name)
     print("---------------------------")
     if args[3] == "-y" then
-        print("installing", p.name, "...", "and any dependencies")
+        print("installing",p.name,"... (and any dependencies if found)")
         print("---------------------------")
         term.setTextColour(colours.yellow)
         if fs.exists(p.filename) then
@@ -390,7 +390,7 @@ end
 
 if args[1] == "install" then
     if #args == 1 then
-        print("please provide a more arguments...")
+        print("please provide more arguments...")
         return
     else
         
