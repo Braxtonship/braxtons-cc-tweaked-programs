@@ -21,8 +21,10 @@ elseif #args == 1 then
     if fs.isDir(path) then
       print("specified is a directory!")
     else
-      fs.open(path, "r")
-      
+      local file = fs.open(path, "r")
+      local contents = file.readAll()
+      file.close()
+      print(contents)
     end
   else
     print("could not find that file...")
