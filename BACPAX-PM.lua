@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.0 HOTFIX 2"
+local version = "OFFICAL RELEASE V3.0 HOTFIX 3"
 local packages = {
     {
         name = "birfetch",
@@ -260,13 +260,11 @@ if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" or args[1] 
             term.setTextColour(colours.white)
         end
         while true do
-         local key = os.pullEvent("key")
+         local event, key = os.pullEvent("key")
    
          if key == keys.space then
           break
-         end
-
-         if key == keys.q then
+         elseif key == keys.q then
           print("quiting...")
           return
          end
