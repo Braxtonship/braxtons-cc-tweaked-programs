@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.0"
+local version = "OFFICAL RELEASE V3.0 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -184,7 +184,7 @@ local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
     "update (will get the newest version of BACPAX Package Manager)",
     "--packages <search (WIP)> or (-l, -p, --list)",
-    "--version (or -v)"
+    "--version (or -v)",
     '"changelog" for the changelogs'
 }
 
