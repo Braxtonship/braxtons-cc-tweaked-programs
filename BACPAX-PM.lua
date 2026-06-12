@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.3.5 HOTFIX 1"
+local version = "WIP UPDATE v2.5"
 local packages = {
     {
         name = "birfetch",
@@ -179,14 +179,32 @@ local packages = {
     },
 }
 
+local changelog = {
+ v2.5 = {
+  "added this changelog",
+  "added scolling to the packages list"
+ }
+}
+
 local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
     "update (will get the newest version of BACPAX Package Manager)",
-    "--packages <search (WIP)> or (-l)",
+    "--packages <search (WIP)> or (-l, -p, --list)",
     "--version (or -v)"
+    '"changelog" for the changelogs'
 }
 
 -- == main code == --
+
+--changelog manager
+
+if args[1] == "changelog" then
+ term.clear()
+ print("BACPAX CHANGELOG")
+ for y = 1, #changelog do
+  print("WIP")
+ end
+end
 
 --argument detection
 
@@ -224,8 +242,8 @@ end
 
 --package lookup
 
-if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
-    print("listing all packages... (slow because scrolling is not yet implemented)")
+if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" or args[1] == "-p" then
+    print("listing all packages... (q to quit, space to scroll down)")
     print("-----------------------")
     for i, p in ipairs(packages) do
         print(p.name)
@@ -238,7 +256,18 @@ if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" then
             print("=> ", p.description)
             term.setTextColour(colours.white)
         end
-        os.sleep(1)
+        while true do
+         local key = os.pullEvent("key")
+   
+         if key == keys.space then
+          break
+         end
+
+         if key == keys.q then
+          print("quiting...")
+          return
+         end
+        end
     end
 end
 
