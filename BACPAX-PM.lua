@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.0 HOTFIX 1"
+local version = "OFFICAL RELEASE V3.0 HOTFIX 2"
 local packages = {
     {
         name = "birfetch",
@@ -198,17 +198,15 @@ if args[1] == "changelog" then
  local br1 = "============="
  local br2 = "-------------"
  print("-=+==bacpax==+=-")
- for y = 1, #changelog do
-  print("OFFICAL RELEASE v3.0")
-  print(br2)
-  print("added things (hopefully wont need a hotfix)")
-  print("fixed big issue with changelog killing bacpax")
-  print(br1)
-  print("WIP UPDATE V2.5")
-  print(br2)
-  print("added changelog to BACPAX")
-  print("fixed and added other things")
- end
+ print("OFFICAL RELEASE v3.0")
+ print(br2)
+ print("added things (hopefully wont need a hotfix)")
+ print("fixed big issue with changelog killing bacpax")
+ print(br1)
+ print("WIP UPDATE V2.5")
+ print(br2)
+ print("added changelog to BACPAX")
+ print("fixed and added other things")
 end
 
 --argument detection
