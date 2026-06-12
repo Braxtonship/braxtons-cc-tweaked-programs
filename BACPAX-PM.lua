@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE v2.3.5"
+local version = "OFFICAL RELEASE v2.3.5 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -171,7 +171,7 @@ local packages = {
         filename = "release latest.lua"
     },
     {
-        name = "BirCat",
+        name = "bircat",
         description = "basically linux's cat.",
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BirCat.lua",
