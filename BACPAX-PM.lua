@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "WIP UPDATE v2.5"
+local version = "OFFICAL RELEASE V3.0"
 local packages = {
     {
         name = "birfetch",
@@ -179,12 +179,6 @@ local packages = {
     },
 }
 
-local changelog = {
- v2.5 = {
-  "added this changelog",
-  "added scolling to the packages list"
- }
-}
 
 local helpCommands = {
     "install <package of choice> (add -y to auto confirm)",
@@ -201,8 +195,19 @@ local helpCommands = {
 if args[1] == "changelog" then
  term.clear()
  print("BACPAX CHANGELOG")
+ local br1 = "============="
+ local br2 = "-------------"
+ print("-=+==bacpax==+=-")
  for y = 1, #changelog do
-  print("WIP")
+  print("OFFICAL RELEASE v3.0")
+  print(br2)
+  print("added things (hopefully wont need a hotfix)")
+  print("fixed big issue with changelog killing bacpax")
+  print(br1)
+  print("WIP UPDATE V2.5")
+  print(br2)
+  print("added changelog to BACPAX")
+  print("fixed and added other things")
  end
 end
 
