@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.0 HOTFIX 3"
+local version = "OFFICAL RELEASE V3.3"
 local packages = {
     {
         name = "birfetch",
@@ -76,14 +76,6 @@ local packages = {
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birfetch.lua",
         filename = "birfetch.lua"
-    },
-    {
-        name = "googol",
-        description = "pretty self explainatory. its google kinda.",
-        method = "pastebin",
-        action = "get",
-        value = "EmssRF7b",
-        filename = "googol"
     },
     {
         name = "password-program",
@@ -177,6 +169,47 @@ local packages = {
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BirCat.lua",
         filename = "bircat"
     },
+    {
+        name = "firebox",
+        description = "a web browser (has some dns stuff)",
+        method = "pastebin",
+        action = "get",
+        value = "4LXcjgDb",
+        filename = "firebox"
+    },
+    {
+        name = "firewolf",
+        description = "recommended web browser (must make websites yourself)",
+        method = "pastebin",
+        action = "get",
+        value = "A7wGH3ty",
+        filename = "firewolf"
+    },
+    {
+        name = "bobcat",
+        description = "firewolf without gui basically. (also by squiddev himself)",
+        method = "pastebin",
+        action = "get",
+        value = "WvXvCTJ9",
+        filename = "BobCat"
+        dependencies = {
+            {
+                method = "pastebin",
+                action = "get",
+                value = "txWFGCHQ",
+                filename = "BobCatAPI",
+                name = "bobcatapi"
+            }
+        }
+    },
+    {
+        name = "bobcatapi",
+        description = "the api used in bobcat",
+        method = "pastebin",
+        action = "get",
+        value = "txWFGCHQ",
+        filename = "BobCatAPI"
+    },
 }
 
 
@@ -198,6 +231,11 @@ if args[1] == "changelog" then
  local br1 = "============="
  local br2 = "-------------"
  print("-=+==bacpax==+=-")
+ print("OFFICAL RELEASE v3.3")
+ print(br2)
+ print("added a shell completion function")
+ print("added some things to packages. mainly web browsers... (-l for list)")
+ print(br1)
  print("OFFICAL RELEASE v3.0")
  print(br2)
  print("added things (hopefully wont need a hotfix)")
@@ -311,6 +349,7 @@ if args[1] == "update" or args[1] == "reinstall" or args[1] == "-u" then
         term.setTextColour(colours.yellow)
         shell.run('wget run "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BACPAX-PM.lua" -v getVerScript')
         term.setTextColour(colours.white)
+        shell.run("bacpax --doNothing")
     else
         term.clear()
         print("update BACPAX package manager")
@@ -328,6 +367,7 @@ if args[1] == "update" or args[1] == "reinstall" or args[1] == "-u" then
             term.setTextColour(colours.green)
             print("updated to latest version: ", version)
             term.setTextColour(colours.white)
+            shell.run("bacpax --doNothing")
         else
             print("aborting update...")
             return
@@ -441,4 +481,9 @@ if args[1] == "install" then
     print("did you type it correctly? (use -l or --packages)")
     return
     end
+end
+
+--do nothing
+if args[1] == "--doNothing" then
+ os.sleep(0.1)
 end
