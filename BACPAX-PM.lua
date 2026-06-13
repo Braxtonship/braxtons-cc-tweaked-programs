@@ -68,7 +68,7 @@ end
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.3"
+local version = "OFFICAL RELEASE V3.3 HOTFIX 1"
 local packages = {
     {
         name = "birfetch",
@@ -191,7 +191,7 @@ local packages = {
         method = "pastebin",
         action = "get",
         value = "WvXvCTJ9",
-        filename = "BobCat"
+        filename = "BobCat",
         dependencies = {
             {
                 method = "pastebin",
