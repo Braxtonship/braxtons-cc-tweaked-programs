@@ -74,12 +74,12 @@ local complete = completion.build(
   completion.dir,
   { completion.file, many = true }
 )
-shell.setCompletionFunction("example.lua", complete)
-read(nil, nil, shell.complete, "example ")
+shell.setCompletionFunction("bacpax", complete)
+read(nil, nil, shell.complete, "bacpax")
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.3 HOTFIX 2"
+local version = "OFFICAL RELEASE V3.3 HOTFIX 3"
 local packages = {
     {
         name = "birfetch",
