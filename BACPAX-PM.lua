@@ -66,9 +66,20 @@ if not fs.exists(".BacpaxDir/cfg/keepOldBacpax.lua") then
     end
 end
 
+-- shell completion
+
+local completion = require "cc.shell.completion"
+local complete = completion.build(
+  { completion.choice, { "--version", "changelog", "--help", "install", "update" } },
+  completion.dir,
+  { completion.file, many = true }
+)
+shell.setCompletionFunction("example.lua", complete)
+read(nil, nil, shell.complete, "example ")
+
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.3 HOTFIX 1"
+local version = "OFFICAL RELEASE V3.3 HOTFIX 2"
 local packages = {
     {
         name = "birfetch",
@@ -231,6 +242,7 @@ if args[1] == "changelog" then
  local br1 = "============="
  local br2 = "-------------"
  print("-=+==bacpax==+=-")
+ print(br1)
  print("OFFICAL RELEASE v3.3")
  print(br2)
  print("added a shell completion function")
