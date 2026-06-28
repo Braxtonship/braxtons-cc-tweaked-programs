@@ -70,7 +70,7 @@ end
 
 local completion = require "cc.shell.completion"
 local complete = completion.build(
-  { completion.choice, { "--version", "changelog", "--help", "install", "update" } },
+  { completion.choice, { "--help", "changelog", "--version", "install", "update" } },
   completion.dir,
   { completion.file, many = true }
 )
@@ -78,7 +78,7 @@ shell.setCompletionFunction("bacpax", complete)
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.3 HOTFIX 4"
+local version = "OFFICAL RELEASE V3.3 HOTFIX 4.1"
 local packages = {
     {
         name = "birfetch",
