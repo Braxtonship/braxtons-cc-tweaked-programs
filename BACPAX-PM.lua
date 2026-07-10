@@ -70,7 +70,7 @@ end
 
 local completion = require "cc.shell.completion"
 local complete = completion.build(
-  { completion.choice, { "--help", "changelog", "--version", "install", "update" } },
+  { completion.choice, { "--help", "--changelog", "--version", "install", "update" } },
   completion.dir,
   { completion.file, many = true }
 )
@@ -78,7 +78,7 @@ shell.setCompletionFunction("bacpax", complete)
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.3 HOTFIX 4.1"
+local version = "OFFICAL RELEASE V3.4"
 local packages = {
     {
         name = "birfetch",
@@ -190,10 +190,16 @@ local packages = {
     {
         name = "firewolf",
         description = "recommended web browser (must make websites yourself)",
-        method = "pastebin",
-        action = "get",
-        value = "A7wGH3ty",
+        method = "wget",
+        value = "https://github.com/1lann/Firewolf/blob/master/src/client.lua",
         filename = "firewolf"
+    },
+    {
+        name = "firewolf-server",
+        description = "good for when you only want the server and not the browser.",
+        method = "wget",
+        value = "https://raw.githubusercontent.com/1lann/Firewolf/master/src/server.lua",
+        filename = "/fwserver"
     },
     {
         name = "bobcat",
@@ -220,6 +226,13 @@ local packages = {
         value = "txWFGCHQ",
         filename = "BobCatAPI"
     },
+    {
+        name = "bsecure",
+        description = "security for your terminal (indev)",
+        method = "wget",
+        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BSecure.lua",
+        filename = "bsecure"
+    },
 }
 
 
@@ -228,19 +241,24 @@ local helpCommands = {
     "update (will get the newest version of BACPAX Package Manager)",
     "--packages <search (WIP)> or (-l, -p, --list)",
     "--version (or -v)",
-    '"changelog" for the changelogs'
+    '"--changelog" for the changelogs'
 }
 
 -- == main code == --
 
 --changelog manager
 
-if args[1] == "changelog" then
+if args[1] == "--changelog" then
  term.clear()
  print("BACPAX CHANGELOG")
  local br1 = "============="
  local br2 = "-------------"
  print("-=+==bacpax==+=-")
+ print(br1)
+ print("OFFICAL RELEASE v3.4")
+ print(br2)
+ print("added some programs")
+ print("and corrected some more")
  print(br1)
  print("OFFICAL RELEASE v3.3")
  print(br2)
