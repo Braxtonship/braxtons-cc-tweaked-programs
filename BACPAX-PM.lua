@@ -78,7 +78,7 @@ shell.setCompletionFunction("bacpax", complete)
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.4"
+local version = "OFFICAL RELEASE V3.4 HOTFIX 2"
 local packages = {
     {
         name = "birfetch",
@@ -174,7 +174,7 @@ local packages = {
         name = "firewolf",
         description = "recommended web browser (must make websites yourself)",
         method = "wget",
-        value = "https://github.com/1lann/Firewolf/blob/master/src/client.lua",
+        value = "https://raw.githubusercontent.com/1lann/Firewolf/master/src/client.lua",
         filename = "firewolf"
     },
     {
