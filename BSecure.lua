@@ -59,7 +59,9 @@ end
 if args[1] == "loginStartup" then
   os.pullEvent = os.pullEventRaw
   term.clear()
-  print("Login: ")
+  term.setCursorPos(1, 1)
+  write("Login: ")
+  term.setCursorPos(1, 7)
   local read = read("")
   local openFile = fs.open(".bsecure/passwords", "r")
   local line = openFile.readLine()
