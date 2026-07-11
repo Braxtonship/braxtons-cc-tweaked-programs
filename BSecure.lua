@@ -1,5 +1,5 @@
 local args = {...}
-local version = "1.2 RELEASE"
+local version = "1.5 RELEASE"
 local commands = {"--help", "--install", "--version"}
 
 -- no args given
@@ -30,7 +30,7 @@ if args[1] == "--install" then
   else
     print("enter a password for your terminal user: ")
     local input = read(" ")
-    print("re enter password")
+    print("re-enter password")
     local input2 = read(" ")
     if input == input2 then
       print("inputs match")
@@ -40,6 +40,9 @@ if args[1] == "--install" then
       print("making directory...")
       fs.makeDir(".bsecure")
       print("making password files")
+      local oldBlink = term.setCursorBlink
+      term.setCursorBlink(false)
+      term.setCursorBlink = function() end
       local passwordFile = fs.open(".bsecure/passwords", "w")
       passwordFile.write(input)
       passwordFile.close()
@@ -48,6 +51,7 @@ if args[1] == "--install" then
       startupFile.write('shell.run("bsecure loginStartup")')
       startupFile.close()
       print("complete!")
+      term.setCursorBlink = oldBlink
     else
       print("inputs dont match")
       os.sleep(1)
@@ -55,17 +59,41 @@ if args[1] == "--install" then
     end
   end
 end
+--password reset
+if args[1] == "--password" then
+  if fs.exists(".BSecure") then
+    print("enter new password")
+    local oldBlink = term.setCursorBlink
+    term.setCursorBlink(false)
+    term.setCursorBlink = function() end
+    local input = read(" ")
+    print("re-enter password")
+    local input2 = read(" ")
+    print("updating password file")
+    local passwordFile = fs.open(".bsecure/passwords", "w")
+      passwordFile.write(input)
+      passwordFile.close()
+    print("done!")
+    term.setCursorBlink = oldBlink
+  else
+    print("please use --install before trying to change a password")
+  end
+end
 --login handling
 if args[1] == "loginStartup" then
   os.pullEvent = os.pullEventRaw
   term.clear()
   term.setCursorPos(1, 1)
-  write("Login: ")
-  term.setCursorPos(1, 7)
+  write("Login:")
+  term.setCursorPos(7, 1)
+  local oldBlink = term.setCursorBlink
+  term.setCursorBlink(false)
+  term.setCursorBlink = function() end
   local read = read("")
   local openFile = fs.open(".bsecure/passwords", "r")
   local line = openFile.readLine()
   if read == line then
+    term.setCursorBlink = oldBlink
     print("Welcome!")
   else
     print("incorrect password!")
