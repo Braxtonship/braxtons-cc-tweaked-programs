@@ -88,23 +88,6 @@ local packages = {
         filename = "birfetch.lua"
     },
     {
-        name = "password-program",
-        description = "for doors and stuff.",
-        method = "pastebin",
-        action = "get",
-        value = "8tQ1vyhh",
-        filename = "lockunlock",
-        dependencies = {
-            {
-                method = "pastebin",
-                action = "get",
-                value = "uUSrzyyx",
-                filename = "startup.lua",
-                name = "startup"
-            }
-        }
-    },
-    {
         name = "far",
         description = "a remote access program.",
         method = "wget",
