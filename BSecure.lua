@@ -1,5 +1,5 @@
 local args = {...}
-local version = "1.1 RELEASE"
+local version = "1.2 RELEASE"
 local commands = {"--help", "--install", "--version"}
 
 -- no args given
@@ -64,10 +64,10 @@ if args[1] == "loginStartup" then
   local openFile = fs.open(".bsecure/passwords", "r")
   local line = openFile.readLine()
   if read == line then
+    print("Welcome!")
+  else
     print("incorrect password!")
     os.sleep(1)
     os.reboot()
-  else
-    print("Welcome!")
   end
 end
