@@ -1,11 +1,15 @@
 local args = {...}
-local version = "0.1 INDEV TESTING"
-local commands = {"--help", "--install"}
+local version = "0.9 RELEASE"
+local commands = {"--help", "--install", "--version"}
 
 -- no args given
 if #args == 0 then
   print("expected arguments.")
   print("use --help for more information")
+end
+--version stuff
+if args[1] == "--version" then
+  print('BSecure is updated to version: "' .. version .. '"')
 end
 --help command
 if args[1] == "--help" then
@@ -32,10 +36,38 @@ if args[1] == "--install" then
       print("inputs match")
       os.sleep(0.5)
       print("continuing with install")
+      print("=======================")
+      print("making directory...")
+      fs.makeDirectory(".bsecure")
+      print("making password files")
+      local passwordFile = fs.open(".bsecure/passwords", "w")
+      passwordFile.write(input)
+      passwordFile.close()
+      print("editing startup file")
+      local startupFile = file.open("startup", "w")
+      startupFile.write('shell.run("bsecure loginStartup")')
+      startupFile.close()
+      print("complete!")
     else
       print("inputs dont match")
       os.sleep(1)
       shell.run("bsecure --install")
     end
+  end
+end
+--login handling
+if args[1] == "loginStartup" then
+  os.pullEvent() = os.pullEventRaw()
+  term.clear()
+  print("Login: ")
+  local read = io.read("")
+  local openFile = fs.open(".bsecure/passwords", "r")
+  local line = openFile.readLine()
+  if read == line then
+    print("incorrect password!")
+    os.sleep(1)
+    os.reboot()
+  else
+    print("Welcome!")
   end
 end
