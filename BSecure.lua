@@ -1,5 +1,5 @@
 local args = {...}
-local version = "0.9 RELEASE"
+local version = "1.0 RELEASE"
 local commands = {"--help", "--install", "--version"}
 
 -- no args given
@@ -29,22 +29,22 @@ if args[1] == "--install" then
     print("BSecure is already installed. (reinstall will be added later)")
   else
     print("enter a password for your terminal user: ")
-    local input = io.read("")
+    local input = read(" ")
     print("re enter password")
-    local input2 = io.read("")
+    local input2 = read(" ")
     if input == input2 then
       print("inputs match")
       os.sleep(0.5)
       print("continuing with install")
       print("=======================")
       print("making directory...")
-      fs.makeDirectory(".bsecure")
+      fs.makeDir(".bsecure")
       print("making password files")
       local passwordFile = fs.open(".bsecure/passwords", "w")
       passwordFile.write(input)
       passwordFile.close()
       print("editing startup file")
-      local startupFile = file.open("startup", "w")
+      local startupFile = fs.open("startup", "w")
       startupFile.write('shell.run("bsecure loginStartup")')
       startupFile.close()
       print("complete!")
@@ -60,7 +60,7 @@ if args[1] == "loginStartup" then
   os.pullEvent() = os.pullEventRaw()
   term.clear()
   print("Login: ")
-  local read = io.read("")
+  local read = read("")
   local openFile = fs.open(".bsecure/passwords", "r")
   local line = openFile.readLine()
   if read == line then
