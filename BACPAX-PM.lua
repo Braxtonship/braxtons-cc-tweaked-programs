@@ -211,7 +211,7 @@ local packages = {
     },
     {
         name = "bsecure",
-        description = "security for your terminal (indev)",
+        description = "basic login security for your terminal (offical)",
         method = "wget",
         value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/BSecure.lua",
         filename = "bsecure"
