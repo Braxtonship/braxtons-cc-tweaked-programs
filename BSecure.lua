@@ -1,5 +1,5 @@
 local args = {...}
-local version = "1.0 RELEASE"
+local version = "1.1 RELEASE"
 local commands = {"--help", "--install", "--version"}
 
 -- no args given
@@ -57,7 +57,7 @@ if args[1] == "--install" then
 end
 --login handling
 if args[1] == "loginStartup" then
-  os.pullEvent() = os.pullEventRaw()
+  os.pullEvent = os.pullEventRaw
   term.clear()
   print("Login: ")
   local read = read("")
