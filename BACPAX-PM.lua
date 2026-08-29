@@ -78,7 +78,7 @@ shell.setCompletionFunction("bacpax", complete)
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.4 HOTFIX 2"
+local version = "OFFICAL RELEASE V3.5"
 local packages = {
     {
         name = "birfetch",
@@ -137,7 +137,7 @@ local packages = {
         name = "birdes",
         description = "a desktop environment selector. (using basalt)",
         method = "wget",
-        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDES.lua",
+        value = "https://raw.githubusercontent.com/Braxtonship/braxtons-cc-tweaked-programs/refs/heads/main/birDES/birDES.lua",
         filename = "birdes",
         dependencies = {
             {
@@ -238,6 +238,11 @@ if args[1] == "--changelog" then
  local br2 = "-------------"
  print("-=+==bacpax==+=-")
  print(br1)
+ print("OFFICAL RELEASE v3.5")
+ print(br2)
+ print("reconfigured path to birDES (because its needed)")
+ print("added basic search")
+ print(br1)
  print("OFFICAL RELEASE v3.4")
  print(br2)
  print("added some programs")
@@ -298,27 +303,65 @@ end
 if args[1] == "--packages" or args[1] == "-l" or args[1] == "--list" or args[1] == "-p" then
     print("listing all packages... (q to quit, space to scroll down)")
     print("-----------------------")
-    for i, p in ipairs(packages) do
-        print(p.name)
-        if p.description == "" then
-            term.setTextColour(colours.yellow)
-            print("=> ", "Description not avalible.")
-            term.setTextColour(colours.white)
-        else
-            term.setTextColour(colours.yellow)
-            print("=> ", p.description)
-            term.setTextColour(colours.white)
-        end
-        while true do
-         local event, key = os.pullEvent("key")
+    if not args[2] or args[2] == "" then --search all packages
+        for i, p in ipairs(packages) do
+            print(p.name)
+            if p.description == "" then
+                term.setTextColour(colours.yellow)
+                print("=> ", "Description not avalible.")
+                term.setTextColour(colours.white)
+            else
+                term.setTextColour(colours.yellow)
+                print("=> ", p.description)
+                term.setTextColour(colours.white)
+            end
+            while true do
+                local event, key = os.pullEvent("key")
    
-         if key == keys.space then
-          break
-         elseif key == keys.q then
-          print("quiting...")
-          return
-         end
+                if key == keys.space then
+                    break
+                elseif key == keys.q then
+                    print("quiting...")
+                    return
+                end
+            end
         end
+    else --search packages
+        local foundAny = false
+
+        for i, p in ipairs(packages) do
+            local searchTerm = string.lower(args[2])
+            
+            if string.find(p.name, searchTerm) or string.find(p.description, searchTerm) then
+                foundAny = true
+
+                print(p.name)
+                if p.description == "" then
+                    term.setTextColour(colours.yellow)
+                    print("=> ", "Description not avalible.")
+                    term.setTextColour(colours.white)
+                else
+                    term.setTextColour(colours.yellow)
+                    print("=> ", p.description)
+                    term.setTextColour(colours.white)
+                end
+                while true do
+                    local event, key = os.pullEvent("key")
+
+                    if key == keys.space then
+                        break
+                    elseif key == keys.q then
+                        print("quiting...")
+                        return
+                    end
+                end
+            end
+        end
+
+        if foundAny == false then
+            print("No Results Found.")
+        end
+
     end
 end
 
