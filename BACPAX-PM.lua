@@ -78,7 +78,7 @@ shell.setCompletionFunction("bacpax", complete)
 
 -- == vars == --
 local args = { ... }
-local version = "OFFICAL RELEASE V3.5"
+local version = "OFFICAL RELEASE V3.5.5"
 local packages = {
     {
         name = "birfetch",
@@ -238,30 +238,34 @@ if args[1] == "--changelog" then
  local br2 = "-------------"
  print("-=+==bacpax==+=-")
  print(br1)
- print("OFFICAL RELEASE v3.5")
+ print("WIP UPDATE V2.5")
  print(br2)
- print("reconfigured path to birDES (because its needed)")
- print("added basic search")
- print(br1)
- print("OFFICAL RELEASE v3.4")
- print(br2)
- print("added some programs")
- print("and corrected some more")
- print(br1)
- print("OFFICAL RELEASE v3.3")
- print(br2)
- print("added a shell completion function")
- print("added some things to packages. mainly web browsers... (-l for list)")
+ print("added changelog to BACPAX")
+ print("fixed and added other things")
  print(br1)
  print("OFFICAL RELEASE v3.0")
  print(br2)
  print("added things (hopefully wont need a hotfix)")
  print("fixed big issue with changelog killing bacpax")
  print(br1)
- print("WIP UPDATE V2.5")
+ print("OFFICAL RELEASE v3.3")
  print(br2)
- print("added changelog to BACPAX")
- print("fixed and added other things")
+ print("added a shell completion function")
+ print("added some things to packages. mainly web browsers... (-l for list)")
+ print(br1)
+ print("OFFICAL RELEASE v3.4")
+ print(br2)
+ print("added some programs")
+ print("and corrected some more")
+ print(br1)
+ print("OFFICAL RELEASE v3.5")
+ print(br2)
+ print("reconfigured path to birDES (because its needed)")
+ print("added basic search")
+ print(br1)
+ print("OFFICAL RELEASE v3.5.5")
+ print(br2)
+ print("fixed this changelog so you can read the newest updates.")
 end
 
 --argument detection
